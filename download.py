@@ -139,9 +139,6 @@ if __name__ == "__main__":
         code, name, year, quarter_str = file_name.rstrip(".pdf").rsplit("_", 3)
         downloaded_reports.add((code, year, quarter_str))
 
-    for code, year, quarter_str in downloaded_reports:
-        print(f"已存在报告: {code} {year} {quarter_str}")
-
     # 拿到 html 目录下的所有文件
     html_files = set([file_name for file_name in os.listdir("html")])
 
@@ -178,7 +175,6 @@ if __name__ == "__main__":
             # 如果文件已存在，则跳过下载
             # 如果 code, year, quarter_str 相同的文件已存在，则跳过下载,
             # 不需要匹配证券名称，因为可能会变动
-            print(code, year, quarter_str)
             if (code, year, quarter_str) in downloaded_reports:
                 print(f"--- 跳过下载：文件已存在: {output_path} ---")
                 continue
